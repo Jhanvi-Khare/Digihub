@@ -1,7 +1,7 @@
 'use client';
 import { useFormik } from 'formik';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
 import * as Yup from 'yup';
 
 const Signup = () => {
