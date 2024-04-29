@@ -1,164 +1,100 @@
-'use client';
-import { useFormik } from 'formik';
-import Link from 'next/link';
-import React from 'react';
-import * as Yup from 'yup';
+import React from 'react'
 
-const Signup = () => {
+function Signup() {
+    return(
+<section className="px-4 pb-24 mx-auto max-w-7xl">
+  <header className="flex items-center justify-center py-5 mb-5 border-b border-gray-200">
+    <a href="/" title="Go to Kutty Home Page">
+      <svg
+        className="w-auto h-6"
+        width={86}
+        height={24}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 335 93"
+      >
+        <path
+          d="M134.71 45.7599c1.32-1.44 2.67-2.94 4.05-4.5 1.44-1.56 2.82-3.09 4.14-4.59 1.32-1.56 2.55-3.03 3.69-4.41 1.2-1.38 2.22-2.58 3.06-3.6h15.93c-3.18 3.66-6.3 7.17-9.36 10.53-3 3.3-6.3 6.72-9.9 10.26 1.8 1.62 3.66 3.57 5.58 5.85 1.92 2.22 3.78 4.53 5.58 6.93 1.8 2.4 3.45 4.8 4.95 7.2 1.5 2.4 2.76 4.59 3.78 6.57h-15.39c-.96-1.56-2.07-3.27-3.33-5.13-1.2-1.92-2.49-3.81-3.87-5.67-1.38-1.92-2.85-3.75-4.41-5.49-1.5-1.74-3-3.21-4.5-4.41v20.7H121.3V8.31991l13.41-2.16V45.7599zM209.35 74.3799c-2.28.66-5.22 1.26-8.82 1.8-3.6.6-7.38.9-11.34.9-4.02 0-7.38-.54-10.08-1.62-2.64-1.08-4.74-2.58-6.3-4.5-1.56-1.98-2.67-4.32-3.33-7.02-.66-2.7-.99-5.67-.99-8.91v-26.37h13.41v24.75c0 4.32.57 7.44 1.71 9.36 1.14 1.92 3.27 2.88 6.39 2.88.96 0 1.98-.03 3.06-.09 1.08-.12 2.04-.24 2.88-.36v-36.54h13.41v45.72zM217.888 16.8699l13.41-2.16v13.95h16.11v11.16h-16.11v16.65c0 2.82.48 5.07 1.44 6.75 1.02 1.68 3.03 2.52 6.03 2.52 1.44 0 2.91-.12 4.41-.36 1.56-.3 2.97-.69 4.23-1.17l1.89 10.44c-1.62.66-3.42 1.23-5.4 1.71-1.98.48-4.41.72-7.29.72-3.66 0-6.69-.48-9.09-1.44-2.4-1.02-4.32-2.4-5.76-4.14-1.44-1.8-2.46-3.96-3.06-6.48-.54-2.52-.81-5.31-.81-8.37v-39.78zM254.279 16.8699l13.409-2.16v13.95h16.11v11.16h-16.11v16.65c0 2.82.48 5.07 1.44 6.75 1.02 1.68 3.03 2.52 6.03 2.52 1.44 0 2.91-.12 4.41-.36 1.56-.3 2.97-.69 4.23-1.17l1.891 10.44c-1.62.66-3.421 1.23-5.401 1.71s-4.409.72-7.289.72c-3.66 0-6.691-.48-9.091-1.44-2.4-1.02-4.32-2.4-5.76-4.14-1.44-1.8-2.459-3.96-3.059-6.48-.54-2.52-.81-5.31-.81-8.37v-39.78zM334.028 28.6599c-2.7 9.12-5.52 17.67-8.46 25.65-2.94 7.98-6.15 15.72-9.63 23.22-1.26 2.7-2.52 4.98-3.78 6.84-1.26 1.92-2.64 3.48-4.14 4.68-1.5 1.26-3.21 2.16-5.13 2.7-1.86.6-4.05.9-6.57.9-2.1 0-4.05-.21-5.85-.63-1.74-.36-3.18-.78-4.32-1.26l2.34-10.71c1.38.48 2.61.81 3.69.99 1.08.18 2.22.27 3.42.27 2.4 0 4.23-.66 5.49-1.98 1.32-1.26 2.43-3.03 3.33-5.31-3.06-6-6.12-12.72-9.18-20.16-3.06-7.5-5.94-15.9-8.64-25.2h14.22c.6 2.34 1.29 4.89 2.07 7.65.84 2.7 1.71 5.46 2.61 8.28.9 2.76 1.8 5.46 2.7 8.1.96 2.64 1.86 5.04 2.7 7.2.78-2.16 1.59-4.56 2.43-7.2.84-2.64 1.65-5.34 2.43-8.1.84-2.82 1.62-5.58 2.34-8.28.78-2.76 1.47-5.31 2.07-7.65h13.86z"
+          fill="#1A202C"
+        />
+        <path
+          d="M5.61825.4114C24.3953-2.95442 43.4551 21.1695 51.21 34.8757v29.6906c-4.8347 14.2497-12.952 19.1401-20.8473 19.362-12.7347.358-22.758-14.27-17.6881-25.9574 2.926-6.7451 8.905-10.1655 13.0016-11.2189C5.61473 45.9161.32294 23.2628.01461 7.98884-.05756 4.41366 2.09844 1.04233 5.61825.4114z"
+          fill="#9E58E9"
+        />
+        <path
+          d="M96.8018.4114C78.0247-2.95442 58.9649 21.1695 51.21 34.8757v29.6906c4.8347 14.2497 12.952 19.1401 20.8474 19.362 12.7346.358 22.7579-14.27 17.688-25.9574-2.9259-6.7451-8.905-10.1655-13.0015-11.2189 20.0614-.8359 25.3531-23.4892 25.6611-38.76316.073-3.57518-2.083-6.94651-5.6032-7.57744z"
+          fill="#7629C8"
+        />
+      </svg>
+      <span className="sr-only">Kutty Home Page</span>
+    </a>
+  </header>
+  <div className="w-full py-6 mx-auto md:w-3/5 lg:w-2/5">
+    <h1 className="mb-1 text-xl font-medium text-center text-gray-800 md:text-3xl">
+      Create your Free Account
+    </h1>
+    <p className="mb-2 text-sm font-normal text-center text-gray-700 md:text-base">
+      Already have an account?
+      <a href="#" className="text-purple-700 hover:text-purple-900">
+        Sign in
+      </a>
+    </p>
+    <form className="mt-8 space-y-4">
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Name
+        </span>
+        <input
+          className="form-input"
+          type="text"
+          placeholder="Your full name"
+          required=""
+        />
+      </label>
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Your Email
+        </span>
+        <input
+          className="form-input"
+          type="email"
+          placeholder="Ex. james@bond.com"
+          inputMode="email"
+          required=""
+        />
+      </label>
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Create a password
+        </span>
+        <input
+          className="form-input"
+          type="password"
+          placeholder="••••••••"
+          required=""
+        />
+      </label>
+      <input
+        type="submit"
+        className="w-full btn btn-primary btn-lg"
+        defaultValue="Sign Up"
+      />
+    </form>
+    <p className="my-5 text-xs font-medium text-center text-gray-700">
+      By clicking "Sign Up" you agree to our
+      <a href="#" className="text-purple-700 hover:text-purple-900">
+        Terms of Service
+      </a>
+      and
+      <a href="#" className="text-purple-700 hover:text-purple-900">
+        Privacy Policy
+      </a>
+      .
+    </p>
+  </div>
+</section>
 
-  const signupValidationSchema = Yup.object().shape({
-    name: Yup.string().required('Name is Required').min(3, 'Name is Too Short'),
-    email: Yup.string().email('Invalid Email').required('Email is Required'),
-    password: Yup.string().required('Password is Required').min(6, 'Password is Too Short')
-    .matches(/[A-Z]/, 'Password must contain uppercase letter' )
-    .matches(/[a-z]/, 'Password must contain lowercase letter')
-    .matches(/[0-9]/, 'Password must contain number'),
-    confirmPassword: Yup.string().required('Confirm Password is Required')
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-  });
-
-  const signupForm = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    },
-    onSubmit: (values, {resetForm}) => {
-      console.log(values);
-      resetForm();
-    },
-    validationSchema: signupValidationSchema
-  });
-
-  return (
-    <section className="vh-100 bg-primary-subtle">
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col">
-            <div className="card shadow my-4">
-              <div className="row g-0">
-                <div className="col-xl-6 d-none d-xl-block">
-                  <div style={{
-                    backgroundImage: `url('https://assets.materialup.com/uploads/7563d4bc-0ed9-4202-a86c-ac8dc46e73ef/preview.jpg')`,
-                    height: '100%',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat'
-                  }}>
-
-                  </div>
-                  {/* <img
-                    src="https://assets.materialup.com/uploads/7563d4bc-0ed9-4202-a86c-ac8dc46e73ef/preview.jpg"
-                    alt="Sample"
-                    className="img-fluid"
-                  /> */}
-                </div>
-                <div className="col-xl-6">
-
-                  <div className="card-body p-md-5">
-                    <h3 className="mb-5 text-primary fw-bold">
-                      Registration Form
-                    </h3>
-                    <form onSubmit={signupForm.handleSubmit}>
-
-                      <div class="mb-3">
-                        <label for="" class="form-label">Email Address</label>
-                        <input
-                          type="text"
-                          id="email"
-                          onChange={signupForm.handleChange}
-                          value={signupForm.values.email}
-                          class="form-control"
-                          placeholder=""
-                        />
-                        {
-                          signupForm.touched.email &&
-                          <small class="text-danger">{signupForm.errors.email}</small>
-                        }
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Name</label>
-                        <input
-                          type="text"
-                          id="name"
-                          onChange={signupForm.handleChange}
-                          value={signupForm.values.name}
-                          class="form-control"
-                          placeholder=""
-                        />
-                        {
-                          signupForm.touched.name &&
-                          <small class="text-danger">{signupForm.errors.name}</small>
-                        }
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Password</label>
-                        <input
-                          type="text"
-                          id="password"
-                          onChange={signupForm.handleChange}
-                          value={signupForm.values.password}
-                          class="form-control"
-                          placeholder=""
-                        />
-                        {
-                          signupForm.touched.password &&
-                          <small class="text-danger">{signupForm.errors.password}</small>
-                        }
-                      </div>
-                      <div class="mb-3">
-                        <label for="" class="form-label">Confirm Password</label>
-                        <input
-                          type="password"
-                          id="confirmPassword"
-                          onChange={signupForm.handleChange}
-                          value={signupForm.values.confirmPassword}
-                          class="form-control"
-                          placeholder=""
-                        />
-                        {
-                          signupForm.touched.confirmPassword &&
-                          <small class="text-danger">{signupForm.errors.confirmPassword}</small>
-                        }
-                      </div>
-                      <div className="form-check mb-4">
-                        <input
-                          className="form-check-input me-2"
-                          type="checkbox"
-                          defaultValue=""
-                          id="form2Example33"
-                          defaultChecked=""
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="form2Example33"
-                        >
-                          I Agree to Terms & Conditions
-                        </label>
-                      </div>
-                      <div className="d-flex justify-content-end pt-3">
-                        <button type="button" className="btn btn-light">
-                          Reset all
-                        </button>
-                        <button type="submit" className="btn btn-primary ms-2">
-                          Submit form
-                        </button>
-                      </div>
-                    </form>
-
-                    <p>Already Registered? <Link href='/login'>Login Here</Link></p>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  )
+    )
 }
 
 export default Signup;
