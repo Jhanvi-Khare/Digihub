@@ -1,5 +1,7 @@
 import React from'react'
 
+function Home() {
+  return (
 <div class="relative overflow-hidden">
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <div class="max-w-2xl text-center mx-auto">
@@ -29,3 +31,7 @@ import React from'react'
     </div>
   </div>
 </div>
+  )
+}
+
+export default Home
